@@ -1,6 +1,7 @@
 import json
 import youtube_search
 import yt_dlp
+import requests
 
 from flask import Flask, request, Response
 
@@ -155,14 +156,9 @@ def fetch_link_rule():
         )
     
     try:
-        return Response(
-            fetch_link(
-                link=link,
-                format=format or "audio"
-            ),
-            status=200,
-            mimetype="text/plain",
-        )
+        _ = fetch_link(link=link, format=format or "audio")
+        res = requests.get(_, stream=True, verify=True)
+        return Response(res.iter_content(decode_unicode=True), mimetype=res.headers.get("Content-Type"))
     except Exception as e:
         return Response(
             json.dumps(
