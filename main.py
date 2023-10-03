@@ -1,11 +1,8 @@
 import json
 import youtube_search
 import yt_dlp
-import requests
-import io
 
-from flask import Flask, request, Response, send_file
-from random import randint
+from flask import Flask, request, Response
 
 app = Flask(__name__)
 
@@ -158,12 +155,14 @@ def fetch_link_rule():
         )
     
     try:
-        _ = fetch_link(link=link, format=format or "audio")
-        res = requests.get(_)
-        file = io.BytesIO()
-        file.write(res.content)
-        file.name = f"{randint(100000, 9999999)}.m4a" if format == "audio" else f"{randint(100000, 9999999)}.mp4"
-        return send_file(file.name)
+        return Response(
+            fetch_link(
+                link=link,
+                format=format or "audio"
+            ),
+            status=200,
+            mimetype="text/plain",
+        )
     except Exception as e:
         return Response(
             json.dumps(
