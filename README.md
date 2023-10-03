@@ -148,7 +148,6 @@ print(response.json())
 ```
 
 # Get help ?
-## Telegram Community
 ---
 - [Support group](https://telegram.me/PyhonProjectsChat)
 - [Updates channel](https://telegram.me/Y88F8)
