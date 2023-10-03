@@ -1,6 +1,6 @@
-import subprocess
 import json
 import youtube_search
+import yt_dlp
 
 from flask import Flask, request, Response
 
@@ -10,22 +10,18 @@ def fetch_link(
         link: str,
         format: str
 ) -> str:
-    return subprocess.check_output(
-        "yt-dlp -g -f {format} {link}".format(
-            format="bestaudio[ext=m4a]" if format == "audio" else "b",
-            link=link
-        )
-    ).decode().strip()
+    return yt_dlp.YoutubeDL({"format": format}).extract_info(
+        url=link,
+        download=False
+    )["url"]
 
 def fetch(
         link: str
 ) -> str:
     return json.dumps(
-        json.loads(
-            subprocess.check_output("yt-dlp -J {link}".format(
-                    link=link
-                )
-            )
+        yt_dlp.YoutubeDL().extract_info(
+            url=link,
+            download=False
         ),
         ensure_ascii=False,
         indent=4
@@ -181,7 +177,11 @@ def fetch_link_rule():
     
 @app.route("/")
 def _():
-    return ":)"
+    return Response(
+            ":)",
+            status=200,
+            mimetype="text/plain",
+        )
 
 if __name__ == "__main__":
     app.run(
