@@ -252,9 +252,6 @@ def send_to_telegram():
                     )
             os.remove(file_name)
             dic = message.__dict__
-            for i in dic:
-                if not dic[i]:
-                    del dic[i]
             return Response(
                 json.dumps(
                     dic,
