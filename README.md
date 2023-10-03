@@ -20,7 +20,7 @@
 ---
 - Parameters: link
 - `http://127.0.0.1/fetch?link=https://youtu.be/xxxxxx`
-- Response: All video data with multiple formats< in json
+- Response: All video data with multiple formats in json
 ```json
 {
     "id": "e-ORhEE9VVg",
