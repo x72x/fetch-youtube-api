@@ -7,14 +7,14 @@
     </b>
 </p>
 
-## How to use ?
-# Fetch stream url:
+# How to use ?
+## Fetch stream url:
 ---
 - Parameters: link , format ( optional, default to audio )
 - `http://127.0.0.1/stream?link=https://youtu.be/xxxxxx`
 - Response: STREAM url of audio/video
 
-# Fetch video info:
+## Fetch video info:
 ---
 - Parameters: link
 - `http://127.0.0.1/fetch?link=https://youtu.be/xxxxxx`
@@ -88,7 +88,7 @@
 ```
 - And too many details .. :)
 
-# YouTube search:
+## YouTube search:
 ---
 - Parameters: q ( query )
 - `http://127.0.0.1/search?q=Blank+Space`
@@ -124,8 +124,8 @@
 ]
 ```
 
-## Get help ?
-# Telegram Community
+# Get help ?
+## Telegram Community
 ---
 - [Support group](https://telegram.me/PyhonProjectsChat)
 - [Updates channel](https://telegram.me/Y88F8)
