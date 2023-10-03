@@ -2,3 +2,4 @@ flask
 gunicorn
 yt-dlp
 youtube-search
+requests
