@@ -10,7 +10,7 @@ def fetch_link(
         link: str,
         format: str
 ) -> str:
-    return yt_dlp.YoutubeDL({"format": format}).extract_info(
+    return yt_dlp.YoutubeDL({"format": "bestaudio[ext=m4a]" if format == "audio" else "best"}).extract_info(
         url=link,
         download=False
     )["url"]
