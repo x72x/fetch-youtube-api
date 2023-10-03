@@ -125,9 +125,31 @@
     },
 ]
 ```
+## Send to telegram
+---
+- Parameters: link, chat_id, msg_id ( optional , reply to msg id ), token, format ( video / audio, default to audio )
+- Response: [Message](https://core.telegram.org/bots/api#message) type.
+- Example: `http://127.0.0.1/tg?token=1234567890:ABCD-EFGH-IGKL-MNOP-QRST-UVWXYZ&chat_id=51123456789&link=https://youtu.be/xxxx`
+```python
+import requests
+
+response = requests.post(
+    "http://127.0.0.1/tg",
+    data={
+        'link': 'https://youtu.be/xxxx',
+        'format': 'audio',
+        'chat_id': '51123456789',
+        'msg_id': '1',
+        'token': '1234567890:ABCD-EFGH-IGKL-MNOP-QRST-UVWXYZ'
+    }
+)
+
+print(response.json())
+```
 
 # Get help ?
 ## Telegram Community
 ---
 - [Support group](https://telegram.me/PyhonProjectsChat)
 - [Updates channel](https://telegram.me/Y88F8)
+  
