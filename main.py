@@ -251,10 +251,9 @@ def send_to_telegram():
                         reply_to_message_id=msg_id
                     )
             os.remove(file_name)
-            dic = message.__dict__
             return Response(
                 json.dumps(
-                    dic,
+                    str(message),
                     ensure_ascii=False,
                     indent=4
                 ),
