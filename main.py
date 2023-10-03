@@ -126,7 +126,7 @@ def fetch_rule():
             mimetype="application/json"
         )
 
-@app.route("/fetch_link", methods=["GET", "POST"])
+@app.route("/stream", methods=["GET", "POST"])
 def fetch_link_rule():
     if request.method == "GET":
         link = request.args.get("link")
